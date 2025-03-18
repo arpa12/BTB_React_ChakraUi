@@ -74,7 +74,7 @@ export default function SliderAndMessage() {
             <Image src={message.image} alt={message.name} sx={messageImageStyles} />
             <Box sx={messageTextStyles}>
               <Text fontWeight="bold">{message.name}</Text>
-              <Text fontSize="sm">{message.title}</Text>
+              <Text fontSize={["xs", "sm", "md"]}>{message.title}</Text>
             </Box>
             <Link href={message.link} sx={detailsLinkStyles}>
               Details

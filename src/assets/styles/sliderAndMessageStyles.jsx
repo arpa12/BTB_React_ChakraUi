@@ -3,26 +3,26 @@ import { keyframes } from "@emotion/react"; // ✅ Correct import
 // Container styles (Main wrapper)
 export const containerStyles = {
   display: "flex",
-  flexDirection: ["column", "column", "row"], // Responsive layout
-  justifyContent: "space-between",
+  flexDirection: ["column", "column", "row"], // Mobile: Column, Desktop: Row
+  justifyContent: "center",
   alignItems: "center",
   width: "100%",
-  maxWidth: "1300px", // Adjust width to match reference image
-  height: "300px", // Keep the height short
-  marginX: "auto",
-  marginY: 1, // Reduce space around it
-  padding: 2,
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  borderRadius: "lg",
+  maxWidth: "100%", // ✅ Set max width to 100% to remove gaps
+  minHeight: "400px",
+  padding: "20px", // ✅ Remove paddingX to prevent extra spacing
+  backgroundImage: `url("https://uat-btb.oss.net.bd/images/sec-rectangle-bg.jpg")`, 
+  backgroundSize: "100% auto", // ✅ Ensures full width coverage
+  backgroundRepeat: "no-repeat", // ✅ Prevents unwanted repetition
+  backgroundPosition: "top center", // ✅ Aligns image correctly
   boxShadow: "lg",
 };
 
 // Slider wrapper styles
 export const sliderWrapperStyles = {
-  width: ["100%", "100%", "70%"], // Bigger slider
+  width: ["100%", "100%", "75%"], // Increase width for large screens
+  flexGrow: 1, // Allow it to take more space dynamically
   position: "relative",
-  height: "100%", // Full height for proper alignment
+  height: "100%",
 };
 
 // Individual slide styles
@@ -35,13 +35,14 @@ export const slideBoxStyles = {
 export const imageStyles = {
   borderRadius: "lg",
   width: "100%",
-  height: "270px",
+  height: ["200px", "270px", "380px"], // Smaller height on mobile
   objectFit: "cover",
 };
 
 // Message box wrapper
 export const messageWrapperStyles = {
-  width: ["100%", "100%", "28%"], // Smaller width than slider
+  width: ["100%", "100%", "25%"], // Make it more responsive
+  flexShrink: 0,
   padding: 3,
   borderRadius: "md",
   boxShadow: "md",
@@ -50,12 +51,12 @@ export const messageWrapperStyles = {
 
 // Message title (header) styles
 export const messageTitleStyles = {
-  fontSize: "lg",
+  fontSize: ["md", "lg", "xl"], // Responsive font size
   fontWeight: "bold",
   marginBottom: 3,
-  color: "white", // White text color
+  color: "white",
   textAlign: "center",
-  backgroundColor: "#006400", // Dark green background for title
+  backgroundColor: "#006400",
   padding: "10px",
   borderTopLeftRadius: "5px",
   borderTopRightRadius: "5px",
@@ -77,8 +78,8 @@ export const messageBoxStyles = {
 
 // Message image styles
 export const messageImageStyles = {
-  width: "50px",
-  height: "50px",
+  width: ["40px", "50px", "50px"], // Smaller image on mobile
+  height: ["40px", "50px", "50px"],
   borderRadius: "full",
   marginRight: 3,
 };
@@ -86,14 +87,14 @@ export const messageImageStyles = {
 // Message text styles
 export const messageTextStyles = {
   flex: 1,
-  fontSize: "sm",
+  fontSize: ["xs", "sm", "md"], // Responsive text size
 };
 
 // Details link styles
 export const detailsLinkStyles = {
   color: "blue.500",
   fontWeight: "bold",
-  fontSize: "sm",
+  fontSize: ["xs", "sm", "sm"],
   cursor: "pointer",
   _hover: { textDecoration: "underline" },
 };
@@ -118,7 +119,7 @@ export const arrowButtonStyles = {
   zIndex: 2,
   transition: "0.3s",
   _hover: { background: "rgba(0, 0, 0, 0.8)" },
-  animation: `${fadeInOut} 1s infinite`, // Subtle animation effect
+  animation: `${fadeInOut} 1s infinite`,
 };
 
 // Left arrow position
