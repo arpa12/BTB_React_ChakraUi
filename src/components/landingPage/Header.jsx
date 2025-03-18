@@ -69,17 +69,17 @@ export default function Header() {
         }}
       >
         <Flex direction="column" gap="1rem">
-          <Link href="#" sx={navItemStyles} onClick={toggleMenu}>
+          <Link href="/" sx={navItemStyles} onClick={toggleMenu}>
             <Icon as={FaHome} sx={iconSpacing} />
             <Text>Home</Text>
           </Link>
 
-          <Link href="#" sx={navItemStyles} onClick={toggleMenu}>
+          <Link href="/services" sx={navItemStyles} onClick={toggleMenu}>
             <Icon as={FaConciergeBell} sx={iconSpacing} />
             <Text>Service</Text>
           </Link>
 
-          <Link href="#" sx={navItemStyles} onClick={toggleMenu}>
+          <Link href="/contact" sx={navItemStyles} onClick={toggleMenu}>
             <Icon as={FaPhone} sx={iconSpacing} />
             <Text>Contact</Text>
           </Link>
