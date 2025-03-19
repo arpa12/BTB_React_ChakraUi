@@ -2,13 +2,18 @@ import { keyframes } from "@emotion/react"; // ✅ Correct import
 
 // Header styles
 export const headerStyles = {
-  bg: "white",
+  position: "fixed", // Keeps header locked at the top
+  top: 0,           // Stick to the very top
+  left: 0,          // Align to the left
+  width: "100%",    // Full width
+  zIndex: 1000,     // Ensures it's above other elements
+  bg: "white",      // Background color
   px: { base: "20px", md: "80px" }, // Responsive padding
-  py: "1rem",
+  py: "1rem",       // Padding for spacing
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)", // Subtle shadow
 };
 
 // Logo styles

@@ -3,6 +3,7 @@ import { Box, Flex, Button, Image, Text, Icon, IconButton, Link } from "@chakra-
 import { FaHome, FaConciergeBell, FaPhone } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useNavigate } from "react-router-dom"; // For navigation
+import registrationForm from "../registrationLogin/registrationForm";
 import btbLogo from "../../assets/images/btb-logo.png";
 import {
   headerStyles,
@@ -14,7 +15,7 @@ import {
   buttonStyles,
   iconButtonStyles,
   mobileMenuStyles
-} from "../../assets/styles/headerStyles";
+} from "../../assets/styles/landingPage/headerStyles";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,80 +40,65 @@ export default function Header() {
     }
   };
 
+   // Function to navigate to the Registration Form
+   const handleRegisterClick = () => {
+    navigate("/register"); // Navigate to Registration Page
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box as="header" sx={headerStyles}>
-      {/* Left Section: Logo */}
-      <Box onClick={handleHomeClick} style={{ cursor: "pointer" }}>
-        <Image src={btbLogo} alt="Bangladesh Tourism Board" sx={logoStyles} />
-      </Box>
+    <Box onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+      <Image src={btbLogo} alt="Bangladesh Tourism Board" sx={logoStyles} />
+    </Box>
 
-      {/* Desktop Navigation */}
-      <Flex sx={navContainerStyles} display={{ base: "none", md: "flex" }}>
+       {/* Desktop Navigation */}
+       <Flex sx={navContainerStyles} display={{ base: "none", md: "flex" }}>
         <Flex as="nav" sx={navMenuStyles}>
-          <Text sx={navItemStyles} onClick={handleHomeClick} style={{ cursor: "pointer" }}>
+          <Text sx={navItemStyles} onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
             <Icon as={FaHome} sx={iconSpacing} />
             Home
           </Text>
 
           {/* Update the Service Link to trigger scrolling */}
-          <Text
-            sx={navItemStyles}
-            onClick={handleServicesClick}
-            style={{ cursor: "pointer" }}
-          >
+          <Text sx={navItemStyles} onClick={handleServicesClick} style={{ cursor: "pointer" }}>
             <Icon as={FaConciergeBell} sx={iconSpacing} />
             Service
           </Text>
 
+
           {/* Link to Contact page */}
-          <Link href="/contact" sx={navItemStyles}>
+         <Link href="/contact" sx={navItemStyles}>
             <Icon as={FaPhone} sx={iconSpacing} />
             Contact
           </Link>
         </Flex>
 
-        <Button sx={buttonStyles}>Registration/Login</Button>
+        {/* Updated Registration/Login Button */}
+        <Button sx={buttonStyles} onClick={handleRegisterClick}>Registration/Login</Button>
       </Flex>
 
-      {/* Mobile Hamburger Menu Button */}
-      <IconButton
-        aria-label="Toggle Menu"
-        icon={isMenuOpen ? <FiX /> : <FiMenu />}
-        sx={iconButtonStyles}
-        onClick={toggleMenu}
-      />
-
-      {/* Mobile Navigation Menu */}
-      <Box
-        sx={{
-          ...mobileMenuStyles,
-          opacity: isMenuOpen ? 1 : 0,
-          maxHeight: isMenuOpen ? "500px" : "0px",
-        }}
-      >
+      <Box sx={{ ...mobileMenuStyles, opacity: isMenuOpen ? 1 : 0, maxHeight: isMenuOpen ? "500px" : "0px" }}>
         <Flex direction="column" gap="1rem">
-          <Text sx={navItemStyles} onClick={() => { handleHomeClick(); toggleMenu(); }}>
+          <Text sx={navItemStyles} onClick={() => { navigate("/"); setIsMenuOpen(false); }}>
             <Icon as={FaHome} sx={iconSpacing} />
             Home
           </Text>
 
-          {/* Update the Service Link to trigger scrolling */}
-          <Text
-            sx={navItemStyles}
-            onClick={() => { handleServicesClick(); toggleMenu(); }}
-            style={{ cursor: "pointer" }}
-          >
+          <Text sx={navItemStyles} onClick={() => { handleServicesClick(); setIsMenuOpen(false); }} style={{ cursor: "pointer" }}>
             <Icon as={FaConciergeBell} sx={iconSpacing} />
             Service
           </Text>
 
-          {/* Link to Contact page */}
-          <Link href="/contact" sx={navItemStyles} onClick={toggleMenu}>
+          <Link href="/contact" sx={navItemStyles} onClick={() => setIsMenuOpen(false)}>
             <Icon as={FaPhone} sx={iconSpacing} />
             Contact
           </Link>
 
-          <Button sx={buttonStyles} onClick={toggleMenu}>Registration/Login</Button>
+          {/* Updated Mobile Registration/Login Button */}
+          <Button sx={buttonStyles} onClick={() => { handleRegisterClick(); setIsMenuOpen(false); }}>
+            Registration/Login
+          </Button>
         </Flex>
       </Box>
     </Box>

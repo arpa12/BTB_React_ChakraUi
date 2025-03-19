@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid, GridItem, Image, Text, Link } from "@chakra-ui/react";
 import btbLogo from "../../assets/images/btb-logo.png";
 import { useNavigate } from "react-router-dom";
-import { logoStyles } from "../../assets/styles/headerStyles";
+import { logoStyles } from "../../assets/styles/landingPage/headerStyles";
 import { Divider } from "@chakra-ui/react";
 
 export default function Footer() {

@@ -8,8 +8,8 @@ export const containerStyles = {
   alignItems: "center",
   width: "100%",
   maxWidth: "100%", // ✅ Set max width to 100% to remove gaps
-  minHeight: "400px",
-  padding: "20px", // ✅ Remove paddingX to prevent extra spacing
+  minHeight: "100%",
+  pt: "100px", // ✅ Remove paddingX to prevent extra spacing
   backgroundImage: `url("https://uat-btb.oss.net.bd/images/sec-rectangle-bg.jpg")`, 
   backgroundSize: "100% auto", // ✅ Ensures full width coverage
   backgroundRepeat: "no-repeat", // ✅ Prevents unwanted repetition

@@ -13,7 +13,7 @@ import React from "react";
 import { AspectRatio } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import { FaArrowAltCircleRight, FaUserTie, FaMapMarkedAlt } from "react-icons/fa";
-import { containerStyles, headingSectionStyles, tourOperatorStyles, tourGuideStyles } from "../../assets/styles/serviceStyles"; // Import the styles
+import { containerStyles, headingSectionStyles, tourOperatorStyles, tourGuideStyles } from "../../assets/styles/landingPage/serviceStyles"; // Import the styles
 
 export default function Services() {
   return (

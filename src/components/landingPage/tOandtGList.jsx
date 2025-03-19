@@ -7,7 +7,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaSuitcase, FaUserAlt } from "react-icons/fa"; // Import icons for Tour Operator and Tour Guide
-import { noticeStyle, noticeCardStyle } from "../../assets/styles/tOandtGListStyles";
+import { noticeStyle, noticeCardStyle } from "../../assets/styles/landingPage/tOandtGListStyles";
 
 export default function Notice() {
   return (

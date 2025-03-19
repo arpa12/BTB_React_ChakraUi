@@ -15,7 +15,7 @@ import {
   arrowButtonStyles,
   leftArrowStyles,
   rightArrowStyles,
-} from "../../assets/styles/sliderAndMessageStyles"; // Import styles
+} from "../../assets/styles/landingPage/sliderAndMessageStyles"; // Import styles
 import sliderAndMessageData from "../../assets/data/sliderAndMessageData"; // Import data
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

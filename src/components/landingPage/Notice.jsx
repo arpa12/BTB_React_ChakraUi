@@ -11,7 +11,7 @@ import {
   Spacer,
   Link,
 } from "@chakra-ui/react";
-import { noticeStyle, noticeCardStyle } from "../../assets/styles/noticeStyle";
+import { noticeStyle, noticeCardStyle } from "../../assets/styles/landingPage/noticeStyle";
 import noticeData from "../../assets/data/noticeData"; // ✅ Import Notice Data
 import { FaRegCalendarAlt } from "react-icons/fa";
 
