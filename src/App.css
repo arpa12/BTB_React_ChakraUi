@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* General container styling */
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* For ensuring full-width usage */
+#services {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+iframe {
+  max-width: 100%;
+  height: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Flex layout for sections */
+.flex-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* Specific styling for components */
+.slider-message {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.video-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.section {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Heading styles */
+.heading {
+  font-size: 2rem;
+  color: green;
+}
+
+.text {
+  font-size: 1rem;
+  color: gray;
+}
+
+/* Adjust for large screen sizes */
+@media (min-width: 1200px) {
+  /* Ensure full width on large screens */
+  .container {
+    padding: 0;
   }
-  to {
-    transform: rotate(360deg);
+
+  .slider-message {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flex-container {
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section {
+    flex: 1;
+    margin: 10px;
   }
 }

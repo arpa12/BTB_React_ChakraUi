@@ -18,7 +18,7 @@ import { containerStyles, headingSectionStyles, tourOperatorStyles, tourGuideSty
 export default function Services() {
   return (
     <Container sx={containerStyles}>
-      <Grid templateColumns={{ base: "1fr", md: "repeat(2, 1fr)" }} gap={16}>
+      <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={{ base: 4, lg: 8 }}>
         <GridItem>
           <Box>
             <Text sx={headingSectionStyles.text}>
@@ -29,7 +29,16 @@ export default function Services() {
             </Heading>
 
             <AspectRatio sx={headingSectionStyles.iframe}>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mNzenfB3OuY?si=0A2Gy6_51v0Lv5lp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/mNzenfB3OuY?si=0A2Gy6_51v0Lv5lp"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
             </AspectRatio>
           </Box>
         </GridItem>
@@ -44,16 +53,13 @@ export default function Services() {
               </Heading>
             </Flex>
             <Text sx={tourOperatorStyles.text}>
-              Our operators play a crucial role in the travel and tourism
-              industry, often including transportation, guided tours,
-              activities, and even meals.
+              Our operators play a crucial role in the travel and tourism industry, often including transportation, guided tours, activities, and even meals.
             </Text>
 
             <Flex sx={tourOperatorStyles.flexActions}>
               <Center flex="1" color="#ff7b37">
                 <Text fontSize="sm">
-                  Clicking this arrow will display the user manual, working
-                  days, payment info, and required documents.
+                  Clicking this arrow will display the user manual, working days, payment info, and required documents.
                 </Text>
               </Center>
               <Square sx={tourOperatorStyles.arrow}>
@@ -71,16 +77,13 @@ export default function Services() {
               </Heading>
             </Flex>
             <Text sx={tourGuideStyles.text}>
-              Guidance to individuals or groups of tourists visiting a specific
-              destination, historical site, museum, city, or other points of
-              interest.
+              Guidance to individuals or groups of tourists visiting a specific destination, historical site, museum, city, or other points of interest.
             </Text>
 
             <Flex sx={tourGuideStyles.flexActions}>
               <Center flex="1" color="#ff7b37">
                 <Text fontSize="sm">
-                  Clicking this arrow will display the user manual, working
-                  days, payment info, and required documents.
+                  Clicking this arrow will display the user manual, working days, payment info, and required documents.
                 </Text>
               </Center>
               <Square sx={tourGuideStyles.arrow}>

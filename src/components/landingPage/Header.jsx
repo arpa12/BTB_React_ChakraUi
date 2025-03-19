@@ -31,6 +31,14 @@ export default function Header() {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top
   };
 
+  // Handle scroll to services section
+  const handleServicesClick = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Box as="header" sx={headerStyles}>
       {/* Left Section: Logo */}
@@ -46,10 +54,15 @@ export default function Header() {
             Home
           </Text>
 
-          <Link href="/services" sx={navItemStyles}>
+          {/* Update the Service Link to trigger scrolling */}
+          <Text
+            sx={navItemStyles}
+            onClick={handleServicesClick}
+            style={{ cursor: "pointer" }}
+          >
             <Icon as={FaConciergeBell} sx={iconSpacing} />
             Service
-          </Link>
+          </Text>
 
           {/* Link to Contact page */}
           <Link href="/contact" sx={navItemStyles}>
@@ -83,10 +96,15 @@ export default function Header() {
             Home
           </Text>
 
-          <Link href="/services" sx={navItemStyles} onClick={toggleMenu}>
+          {/* Update the Service Link to trigger scrolling */}
+          <Text
+            sx={navItemStyles}
+            onClick={() => { handleServicesClick(); toggleMenu(); }}
+            style={{ cursor: "pointer" }}
+          >
             <Icon as={FaConciergeBell} sx={iconSpacing} />
             Service
-          </Link>
+          </Text>
 
           {/* Link to Contact page */}
           <Link href="/contact" sx={navItemStyles} onClick={toggleMenu}>
