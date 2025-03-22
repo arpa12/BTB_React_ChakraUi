@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/data/noticeData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/data/sliderAndMessageData.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/Heritage tour.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/Luxury.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/Sea Beach.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/Waterfalls.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/btb-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/food.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/green tourism.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/landingPageBg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/headerStyles.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/noticeStyle.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/serviceStyles.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/sliderAndMessageStyles.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/tOandtGListStyles.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles/landingPage/videoStyle.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Contact.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Footer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Header.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Map.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Notice.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Services.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/Video.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/popularDestination.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/sliderAndMessage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/landingPage/tOandtGList.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/registrationLogin/loginForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/registrationLogin/registrationForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2uemRFOtX4SYzSvEDknxbP8sfuE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/xampp/htdocs/BTB_React",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PS-243.25659.45" />
+        <option value="bundled-php-predefined-a98d8de5180a-1ec7b7818973-com.jetbrains.php.sharedIndexes-PS-243.25659.45" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="" />
+      <created>1742617403706</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742617403706</updated>
+      <workItem from="1742617405275" duration="14270000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
