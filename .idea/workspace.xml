@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/loginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/loginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboard.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +160,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2024.3.4\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -192,7 +189,8 @@
       <updated>1742617403706</updated>
       <workItem from="1742617405275" duration="14270000" />
       <workItem from="1742704726670" duration="24000" />
-      <workItem from="1742704753375" duration="7813000" />
+      <workItem from="1742704753375" duration="9250000" />
+      <workItem from="1742789056018" duration="9482000" />
     </task>
     <servers />
   </component>

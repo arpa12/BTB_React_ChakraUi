@@ -1,7 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { Box, Heading, Text, Button, Alert, AlertIcon, Spinner } from "@chakra-ui/react";
+import {
+    Box,
+    Heading,
+    Text,
+    Button,
+    Alert,
+    AlertIcon,
+    Spinner,
+    SimpleGrid,
+    Card,
+    CardBody,
+    VStack,
+    Icon,
+    Avatar,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    HStack,
+    Drawer,
+    DrawerBody,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    useDisclosure,
+    useBreakpointValue,
+} from "@chakra-ui/react";
+import { FaClipboardList, FaCheckCircle, FaUser, FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+    sidebarStyles,
+    mobileSidebarStyles,
+    mobileButtonStyles,
+    headerStyles,
+    alertStyles,
+    cardStyles,
+} from "../../assets/styles/registrationLogin/dashboardStyles"; // Importing the styles
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
@@ -9,6 +44,9 @@ const Dashboard = () => {
     const [error, setError] = useState("");
     const [logoutError, setLogoutError] = useState("");
     const navigate = useNavigate();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const sidebarWidth = useBreakpointValue({ base: "full", md: "250px" }); // Adjust width for mobile vs desktop
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -22,8 +60,8 @@ const Dashboard = () => {
             try {
                 const response = await axios.get("http://127.0.0.1:8000/api/dashboard", {
                     headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                        Authorization: `Bearer ${token}`,
+                    },
                 });
 
                 setUser(response.data.user);
@@ -55,11 +93,9 @@ const Dashboard = () => {
         try {
             const response = await axios.post("http://127.0.0.1:8000/api/logout", {}, {
                 headers: {
-                    Authorization: `Bearer ${token}`
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             });
-
-            console.log("Logout Response:", response.data);
 
             if (response.data.message === "User Logged Out Successfully") {
                 localStorage.removeItem("token");
@@ -82,39 +118,116 @@ const Dashboard = () => {
     }
 
     return (
-        <Box
-            maxW="lg"
-            mx="auto"
-            mt="100px"
-            p="6"
-            borderWidth="1px"
-            borderRadius="lg"
-            boxShadow="lg"
-            bg="white"
-        >
-            {error && (
-                <Alert status="error" mb="4">
-                    <AlertIcon />
-                    {error}
-                </Alert>
-            )}
-
-            {logoutError && (
-                <Alert status="error" mb="4">
-                    <AlertIcon />
-                    {logoutError}
-                </Alert>
-            )}
-
-            {user && (
-                <>
-                    <Heading mb="4" color="blue.600">Welcome, {user.name}!</Heading>
-                    <Text mb="4">This is your dashboard. Your email: {user.email}</Text>
-                    <Button colorScheme="red" onClick={handleLogout}>
-                        Logout
+        <Box display="flex" minHeight="100vh" backgroundColor="purple.700">
+            {/* Sidebar for Desktop */}
+            <Box sx={sidebarStyles.base} width={sidebarWidth} sx={sidebarStyles.desktop}>
+                <Heading as="h3" size="lg" mb="8" color="white">Dashboard</Heading>
+                <VStack spacing="4" align="stretch">
+                    <Button
+                        onClick={() => navigate("/application")}
+                        backgroundColor="transparent"
+                        color="white"
+                        _hover={{ bg: "purple.600" }}
+                    >
+                        Applications
                     </Button>
-                </>
-            )}
+                </VStack>
+            </Box>
+
+            {/* Hamburger Menu for Mobile */}
+            <Box sx={mobileSidebarStyles}>
+                <Button onClick={onOpen} sx={mobileButtonStyles}>
+                    <Icon as={FaBars} boxSize={8} />
+                </Button>
+                <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+                    <DrawerOverlay />
+                    <DrawerContent>
+                        <DrawerCloseButton />
+                        <DrawerBody>
+                            <VStack>
+                                <Button
+                                    onClick={() => navigate("/application")}
+                                    backgroundColor="transparent"
+                                    color="purple.700"
+                                    _hover={{ bg: "purple.100" }}
+                                >
+                                    Applications
+                                </Button>
+                            </VStack>
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
+            </Box>
+
+            {/* Main Content */}
+            <Box flex="1" p="8" bg="gray.50">
+                {/* Header */}
+                <Box sx={headerStyles}>
+                    <HStack ml="auto">
+                        {/* Profile Icon with Username */}
+                        <Menu>
+                            <MenuButton as={Button} rightIcon={<FaUser />} variant="link" color="purple.700">
+                                {user?.name}
+                            </MenuButton>
+                            <MenuList>
+                                <Box p="4" display="flex" alignItems="center">
+                                    <Avatar name={user?.name} size="lg" mr="4" />
+                                    <Box>
+                                        <Text fontWeight="bold">{user?.name}</Text>
+                                    </Box>
+                                </Box>
+                                <MenuItem>{user.email}</MenuItem>
+                                <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </HStack>
+                </Box>
+
+                {error && (
+                    <Alert status="error" sx={alertStyles}>
+                        <AlertIcon />
+                        {error}
+                    </Alert>
+                )}
+
+                {logoutError && (
+                    <Alert status="error" sx={alertStyles}>
+                        <AlertIcon />
+                        {logoutError}
+                    </Alert>
+                )}
+
+                {user && (
+                    <>
+                        <Heading mb="4" color="blue.600" fontSize="3xl" fontWeight="bold">
+                            Welcome, {user.name}!
+                        </Heading>
+                        <Text mb="4" fontSize="lg" color="gray.600">This is your dashboard.</Text>
+
+                        <SimpleGrid columns={[1, 2, 3]} spacing="8">
+                            {/* Application Status Cards with 3D effect */}
+                            <Card sx={{ ...cardStyles.base, ...cardStyles.hover }}>
+                                <CardBody>
+                                    <VStack>
+                                        <Icon as={FaClipboardList} boxSize={10} color="purple.600" />
+                                        <Heading size="md" color="purple.600">Draft Application</Heading>
+                                        <Text fontSize="2xl" color="purple.600">2</Text>
+                                    </VStack>
+                                </CardBody>
+                            </Card>
+                            <Card sx={{ ...cardStyles.base, ...cardStyles.hover }}>
+                                <CardBody>
+                                    <VStack>
+                                        <Icon as={FaCheckCircle} boxSize={10} color="purple.600" />
+                                        <Heading size="md" color="purple.600">Saved Application</Heading>
+                                        <Text fontSize="2xl" color="purple.600">6</Text>
+                                    </VStack>
+                                </CardBody>
+                            </Card>
+                        </SimpleGrid>
+                    </>
+                )}
+            </Box>
         </Box>
     );
 };
