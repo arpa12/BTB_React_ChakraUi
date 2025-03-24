@@ -13,12 +13,13 @@ import Footer from "./components/landingPage/Footer";
 import RegistrationForm from "./components/registrationLogin/registrationForm";
 import LoginForm from "./components/registrationLogin/loginForm";
 import Dashboard from "./components/registrationLogin/dashboard";
+import RegisterForm from "./components/applications/registerForm";
 
 const App = () => {
-    const location = useLocation();  // Get the current location
+    const location = useLocation();
 
-    // Render Header only if NOT on the Dashboard route
-    const showHeader = location.pathname !== "/dashboard";
+    // Render Header only if NOT on the Dashboard or RegisterForm route
+    const showHeader = location.pathname !== "/dashboard" && location.pathname !== "/registerForm";
 
     return (
         <>
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path="/register" element={<RegistrationForm />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/registerForm" element={<RegisterForm />} />
             </Routes>
         </>
     );
