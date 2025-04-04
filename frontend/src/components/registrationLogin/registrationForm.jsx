@@ -38,25 +38,41 @@ const RegistrationForm = () => {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/register", formData);
+      const response = await axios.post(
+          "http://127.0.0.1:8000/api/register",
+          formData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+            },
+          }
+      );
 
       if (response.data) {
-        setSuccess("Registration successful! Please log in.");
-        setFormData({ name: "", email: "", password: "" }); // Clear the form
-        setTimeout(() => navigate("/login"), 2000); // Redirect to login page after 2 seconds
+        setSuccess("Registration successful! Redirecting to login...");
+        setFormData({ name: "", email: "", password: "" });
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
       }
     } catch (err) {
-      if (err.response) {
-        if (err.response.data.errors) {
-          setError(err.response.data.errors.email || "Registration failed. Please try again.");
+      if (err.response && err.response.data) {
+        const serverError = err.response.data.errors;
+
+        if (serverError) {
+          const firstError = Object.values(serverError)[0][0]; // Get the first error message
+          setError(firstError || "Registration failed.");
         } else {
-          setError(err.response.data.message || "Registration failed. Please try again.");
+          setError(err.response.data.message || "Registration failed.");
         }
       } else {
         setError("Something went wrong. Please try again.");
       }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -74,6 +90,7 @@ const RegistrationForm = () => {
         <Heading mb="6" fontSize="3xl" textAlign="center" color="blue.600">
           Create an Account
         </Heading>
+
         <form onSubmit={handleSubmit}>
           <VStack spacing={6} align="stretch">
             <FormControl isRequired>
@@ -149,7 +166,14 @@ const RegistrationForm = () => {
           </Button>
         </Text>
 
-        <Button mt="4" variant="link" onClick={() => navigate("/")} colorScheme="gray" size="sm" width="full">
+        <Button
+            mt="4"
+            variant="link"
+            onClick={() => navigate("/")}
+            colorScheme="gray"
+            size="sm"
+            width="full"
+        >
           Back to Home
         </Button>
       </Box>
