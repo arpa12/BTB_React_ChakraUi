@@ -7,7 +7,7 @@ import DashboardHome from "../DashboardHome";
 import Profile from "../Profile";
 import ApplicationForm from "../../applications/applicationForm";
 import ToLayout from "../../applications/toLayout";
-import RegisterForm from "../../applications/registerForm";
+import RegisterForm from "../../applications/tourOperator/RegisterForm"; // ✅ Fixed double slash
 
 const DashboardLayout = () => {
     return (

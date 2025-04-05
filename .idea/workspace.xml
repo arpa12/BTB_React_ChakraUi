@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/applications/applicationForm.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/registerForm.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboard.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/registerForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/registerForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/DashboardLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/DashboardLayout.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +197,8 @@
       <workItem from="1742789056018" duration="14536000" />
       <workItem from="1743783117621" duration="311000" />
       <workItem from="1743783440285" duration="31000" />
-      <workItem from="1743783472530" duration="5798000" />
+      <workItem from="1743783472530" duration="6788000" />
+      <workItem from="1743868629087" duration="6113000" />
     </task>
     <servers />
   </component>
