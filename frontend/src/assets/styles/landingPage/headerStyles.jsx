@@ -9,7 +9,7 @@ export const headerStyles = {
   zIndex: 1000,     // Ensures it's above other elements
   bg: "white",      // Background color
   px: { base: "20px", md: "80px" }, // Responsive padding
-  py: "1rem",       // Padding for spacing
+  py: "5px",       // Padding for spacing
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
@@ -75,11 +75,12 @@ export const iconButtonStyles = {
   position: "absolute", // ✅ Keeps the icon in place
   right: "20px", // ✅ Ensures it's positioned properly
   top: "20px",
-  zIndex: "1000", // ✅ Ensures it's always above the menu
+  zIndex: "1001", // ✅ Ensures it's always above the menu
   transition: "transform 0.3s ease",
   bg: "green.800",
   color: "white",
   _hover: { bg: "green.700" },
+  variant: "ghost",
 };
 
 // ✅ Mobile menu styles (Slide-down menu)
@@ -91,3 +92,15 @@ export const mobileMenuStyles = {
   display: { base: "block", md: "none" },
   borderRadius: "8px",
 };
+
+export const navItemMobileStyles = {
+  fontSize: "md",
+  fontWeight: "500",
+  color: "gray.800",
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+  cursor: "pointer",
+  _hover: { color: "blue.500" },
+};
+

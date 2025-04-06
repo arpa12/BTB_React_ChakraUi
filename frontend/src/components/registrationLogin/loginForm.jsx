@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Box, Input, Button, FormControl, FormLabel, Heading, Text, VStack, FormErrorMessage, Alert, AlertIcon } from "@chakra-ui/react";
+import {
+  Box, Input, Button, FormControl, FormLabel, Heading,
+  Text, VStack, Alert, AlertIcon
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -29,69 +32,65 @@ const LoginForm = () => {
       const response = await axios.post("http://127.0.0.1:8000/api/login", formData, {
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json"
-        }
+          Accept: "application/json",
+        },
       });
 
-      console.log("Response:", response.data); // Log the response to verify success
-
       if (response.data.token) {
-        // Save the token to localStorage (or any secure storage)
         localStorage.setItem("token", response.data.token);
-        setSuccess("Login successful! Redirecting to dashboard...");
-
-        // Redirect to Dashboard after successful login
+        setSuccess("Login successful! Redirecting...");
         setTimeout(() => navigate("/dashboard"), 2000);
       } else {
         setError("Login failed. Please try again.");
       }
     } catch (err) {
+      setError(
+          err.response?.data?.error || "Login failed. Please check your credentials."
+      );
+    } finally {
       setLoading(false);
-      console.error("Error:", err.response); // Log error for debugging
-      if (err.response && err.response.data) {
-        setError(err.response.data.error || "Login failed. Please check your credentials.");
-      } else {
-        setError("Something went wrong. Please try again.");
-      }
     }
-    setLoading(false);
   };
 
   return (
       <Box
-          maxW="md"
           mx="auto"
-          mt={{ base: "50px", md: "100px" }}
-          p={{ base: "4", md: "6" }}
+          mt={{ base: "150px", md: "150px", lg: "150px" }}
+          p={{ base: 4, md: 6 }}
           borderWidth="1px"
           borderRadius="lg"
-          boxShadow="lg"
-          width="full"
+          boxShadow="md"
           bg="white"
+          width={{ base: "90%", sm: "400px", md: "450px" }}
       >
-        <Heading mb="6" fontSize="3xl" textAlign="center" color="blue.600">Log In</Heading>
+        <Heading mb={5} fontSize={{ base: "xl", md: "2xl" }} textAlign="center" color="blue.600">
+          Log In
+        </Heading>
+
         <form onSubmit={handleSubmit}>
-          <VStack spacing={6} align="stretch">
+          <VStack spacing={4}>
             <FormControl isRequired>
-              <FormLabel>Email</FormLabel>
+              <FormLabel fontSize={{ base: "sm", md: "md" }}>Email</FormLabel>
               <Input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="example@example.com"
+                  size="md"
                   focusBorderColor="blue.500"
               />
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>Password</FormLabel>
+              <FormLabel fontSize={{ base: "sm", md: "md" }}>Password</FormLabel>
               <Input
                   type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
+                  size="md"
                   focusBorderColor="blue.500"
               />
             </FormControl>
@@ -100,12 +99,9 @@ const LoginForm = () => {
                 type="submit"
                 colorScheme="blue"
                 width="full"
-                size="lg"
-                mt="4"
+                size="md"
                 isLoading={loading}
                 loadingText="Logging in..."
-                _hover={{ bg: "blue.600" }}
-                _active={{ bg: "blue.700" }}
             >
               Log In
             </Button>
@@ -113,27 +109,34 @@ const LoginForm = () => {
         </form>
 
         {error && (
-            <Alert status="error" mt="4">
+            <Alert status="error" mt={3}>
               <AlertIcon />
               {error}
             </Alert>
         )}
 
         {success && (
-            <Alert status="success" mt="4">
+            <Alert status="success" mt={3}>
               <AlertIcon />
               {success}
             </Alert>
         )}
 
-        <Text mt="3" textAlign="center" fontSize="sm">
+        <Text mt={4} fontSize="sm" textAlign="center">
           Don't have an account?{" "}
           <Button variant="link" colorScheme="blue" onClick={() => navigate("/register")}>
             Register
           </Button>
         </Text>
 
-        <Button mt="4" variant="link" onClick={() => navigate("/")} colorScheme="gray" size="sm" width="full">
+        <Button
+            mt={3}
+            variant="link"
+            colorScheme="gray"
+            size="sm"
+            width="full"
+            onClick={() => navigate("/")}
+        >
           Back to Home
         </Button>
       </Box>

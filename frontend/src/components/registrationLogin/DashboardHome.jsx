@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
     Box, Heading, Text, Alert, AlertIcon, Spinner,
-    SimpleGrid, Card, CardBody, VStack, Icon
+    SimpleGrid, Card, CardBody, VStack, Icon,
+    useBreakpointValue
 } from '@chakra-ui/react';
 import { FaClipboardList, FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +18,8 @@ const DashboardHome = () => {
     const [error, setError] = useState('');
     const [logoutError, setLogoutError] = useState('');
     const navigate = useNavigate();
+
+    const gridColumns = useBreakpointValue({ base: 1, md: 2, lg: 3 });
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -49,45 +52,45 @@ const DashboardHome = () => {
 
     if (loading) {
         return (
-            <Box textAlign="center" mt="100px">
+            <Box textAlign="center" mt={["50px", "100px"]}>
                 <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
             </Box>
         );
     }
 
     return (
-        <Box p="6">
+        <Box p={{ base: 4, md: 6 }}>
             {/* Error Alerts */}
             {error && (
-                <Alert status="error" sx={alertStyles}>
+                <Alert status="error" sx={alertStyles} mb={4}>
                     <AlertIcon />
                     {error}
                 </Alert>
             )}
             {logoutError && (
-                <Alert status="error" sx={alertStyles}>
+                <Alert status="error" sx={alertStyles} mb={4}>
                     <AlertIcon />
                     {logoutError}
                 </Alert>
             )}
 
             {/* Dashboard Cards */}
-            <SimpleGrid columns={[1, 2, 3]} spacing="8">
+            <SimpleGrid columns={gridColumns} spacing={{ base: 4, md: 8 }}>
                 <Card sx={{ ...cardStyles.base, ...cardStyles.hover }}>
                     <CardBody>
-                        <VStack>
-                            <Icon as={FaClipboardList} boxSize={10} color="purple.600" />
-                            <Heading size="md" color="purple.600">Draft Application</Heading>
-                            <Text fontSize="2xl" color="purple.600">2</Text>
+                        <VStack spacing={3}>
+                            <Icon as={FaClipboardList} boxSize={{ base: 8, md: 10 }} color="purple.600" />
+                            <Heading size={{ base: 'sm', md: 'md' }} color="purple.600">Draft Application</Heading>
+                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">2</Text>
                         </VStack>
                     </CardBody>
                 </Card>
                 <Card sx={{ ...cardStyles.base, ...cardStyles.hover }}>
                     <CardBody>
-                        <VStack>
-                            <Icon as={FaCheckCircle} boxSize={10} color="purple.600" />
-                            <Heading size="md" color="purple.600">Saved Application</Heading>
-                            <Text fontSize="2xl" color="purple.600">6</Text>
+                        <VStack spacing={3}>
+                            <Icon as={FaCheckCircle} boxSize={{ base: 8, md: 10 }} color="purple.600" />
+                            <Heading size={{ base: 'sm', md: 'md' }} color="purple.600">Saved Application</Heading>
+                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">6</Text>
                         </VStack>
                     </CardBody>
                 </Card>

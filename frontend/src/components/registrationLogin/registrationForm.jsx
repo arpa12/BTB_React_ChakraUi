@@ -38,16 +38,12 @@ const RegistrationForm = () => {
     }
 
     try {
-      const response = await axios.post(
-          "http://127.0.0.1:8000/api/register",
-          formData,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json",
-            },
-          }
-      );
+      const response = await axios.post("http://127.0.0.1:8000/api/register", formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
 
       if (response.data) {
         setSuccess("Registration successful! Redirecting to login...");
@@ -60,9 +56,8 @@ const RegistrationForm = () => {
     } catch (err) {
       if (err.response && err.response.data) {
         const serverError = err.response.data.errors;
-
         if (serverError) {
-          const firstError = Object.values(serverError)[0][0]; // Get the first error message
+          const firstError = Object.values(serverError)[0][0];
           setError(firstError || "Registration failed.");
         } else {
           setError(err.response.data.message || "Registration failed.");
@@ -77,24 +72,28 @@ const RegistrationForm = () => {
 
   return (
       <Box
-          maxW="md"
           mx="auto"
-          mt={{ base: "50px", md: "100px" }}
-          p={{ base: "4", md: "6" }}
+          mt={{ base: "150px", md: "150px", lg: "100px" }}
+          p={{ base: 4, sm: 6, md: 8 }}
           borderWidth="1px"
           borderRadius="lg"
           boxShadow="lg"
-          width="full"
           bg="white"
+          width={{ base: "90%", sm: "400px", md: "450px" }}
       >
-        <Heading mb="6" fontSize="3xl" textAlign="center" color="blue.600">
+        <Heading
+            mb={6}
+            fontSize={{ base: "2xl", md: "3xl" }}
+            textAlign="center"
+            color="blue.600"
+        >
           Create an Account
         </Heading>
 
         <form onSubmit={handleSubmit}>
-          <VStack spacing={6} align="stretch">
+          <VStack spacing={5}>
             <FormControl isRequired>
-              <FormLabel>Name</FormLabel>
+              <FormLabel fontSize={{ base: "sm", md: "md" }}>Name</FormLabel>
               <Input
                   type="text"
                   name="name"
@@ -102,11 +101,12 @@ const RegistrationForm = () => {
                   onChange={handleChange}
                   placeholder="John Doe"
                   focusBorderColor="blue.500"
+                  size="md"
               />
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>Email</FormLabel>
+              <FormLabel fontSize={{ base: "sm", md: "md" }}>Email</FormLabel>
               <Input
                   type="email"
                   name="email"
@@ -114,11 +114,12 @@ const RegistrationForm = () => {
                   onChange={handleChange}
                   placeholder="example@example.com"
                   focusBorderColor="blue.500"
+                  size="md"
               />
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>Password</FormLabel>
+              <FormLabel fontSize={{ base: "sm", md: "md" }}>Password</FormLabel>
               <Input
                   type="password"
                   name="password"
@@ -126,6 +127,7 @@ const RegistrationForm = () => {
                   onChange={handleChange}
                   placeholder="Enter your password"
                   focusBorderColor="blue.500"
+                  size="md"
               />
             </FormControl>
 
@@ -133,12 +135,9 @@ const RegistrationForm = () => {
                 type="submit"
                 colorScheme="blue"
                 width="full"
-                size="lg"
-                mt="4"
+                size="md"
                 isLoading={loading}
                 loadingText="Registering..."
-                _hover={{ bg: "blue.600" }}
-                _active={{ bg: "blue.700" }}
             >
               Register
             </Button>
@@ -146,33 +145,38 @@ const RegistrationForm = () => {
         </form>
 
         {error && (
-            <Alert status="error" mt="4">
+            <Alert status="error" mt={4}>
               <AlertIcon />
               {error}
             </Alert>
         )}
 
         {success && (
-            <Alert status="success" mt="4">
+            <Alert status="success" mt={4}>
               <AlertIcon />
               {success}
             </Alert>
         )}
 
-        <Text mt="3" textAlign="center" fontSize="sm">
+        <Text mt={4} fontSize="sm" textAlign="center">
           Already have an account?{" "}
-          <Button variant="link" colorScheme="blue" onClick={() => navigate("/login")}>
+          <Button
+              variant="link"
+              colorScheme="blue"
+              size="sm"
+              onClick={() => navigate("/login")}
+          >
             Log In
           </Button>
         </Text>
 
         <Button
-            mt="4"
+            mt={3}
             variant="link"
-            onClick={() => navigate("/")}
             colorScheme="gray"
             size="sm"
             width="full"
+            onClick={() => navigate("/")}
         >
           Back to Home
         </Button>

@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import DashboardHome from "../DashboardHome";
-import Profile from "../Profile";
 import ApplicationForm from "../../applications/applicationForm";
 import ToLayout from "../../applications/toLayout";
 import RegisterForm from "../../applications/tourOperator/RegisterForm"; // ✅ Fixed double slash
@@ -19,7 +18,6 @@ const DashboardLayout = () => {
                 <Box p="4" overflowY="auto" flex="1">
                     <Routes>
                         <Route path="/" element={<DashboardHome />} />
-                        <Route path="profile" element={<Profile />} />
                         <Route path="applications" element={<ApplicationForm />} />
                         <Route path="applications/tour-operator" element={<ToLayout />} />
                         <Route path="applications/registration-form" element={<RegisterForm />} />
