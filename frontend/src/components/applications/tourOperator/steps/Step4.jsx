@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Box,
     Text,
@@ -14,19 +14,16 @@ import {
     useBreakpointValue,
 } from '@chakra-ui/react';
 
-const Step4 = () => {
-    const [payment, setPayment] = useState({
-        method: '',
-        transactionId: '',
-        amount: '',
-    });
+const Step4 = ({ formData, setFormData }) => {
+    const inputSize = useBreakpointValue({ base: 'md', md: 'sm' });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPayment({ ...payment, [name]: value });
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
-
-    const inputSize = useBreakpointValue({ base: 'md', md: 'sm' });
 
     return (
         <Box
@@ -50,10 +47,12 @@ const Step4 = () => {
 
             <VStack spacing={6} align="stretch">
                 <FormControl isRequired>
-                    <FormLabel fontWeight="medium">পেমেন্ট মাধ্যম (Payment Method)</FormLabel>
+                    <FormLabel fontWeight="medium">
+                        পেমেন্ট মাধ্যম (Payment Method)
+                    </FormLabel>
                     <Select
                         name="method"
-                        value={payment.method}
+                        value={formData.method || ''}
                         onChange={handleChange}
                         placeholder="Select a method"
                         size={inputSize}
@@ -69,10 +68,12 @@ const Step4 = () => {
                 </FormControl>
 
                 <FormControl isRequired>
-                    <FormLabel fontWeight="medium">লেনদেন নম্বর (Transaction ID)</FormLabel>
+                    <FormLabel fontWeight="medium">
+                        লেনদেন নম্বর (Transaction ID)
+                    </FormLabel>
                     <Input
-                        name="transactionId"
-                        value={payment.transactionId}
+                        name="transaction_id"
+                        value={formData.transaction_id || ''}
                         onChange={handleChange}
                         placeholder="Enter transaction ID"
                         size={inputSize}
@@ -83,11 +84,13 @@ const Step4 = () => {
                 </FormControl>
 
                 <FormControl isRequired>
-                    <FormLabel fontWeight="medium">টাকার পরিমাণ (Amount in BDT)</FormLabel>
+                    <FormLabel fontWeight="medium">
+                        টাকার পরিমাণ (Amount in BDT)
+                    </FormLabel>
                     <Input
                         name="amount"
                         type="number"
-                        value={payment.amount}
+                        value={formData.amount || ''}
                         onChange={handleChange}
                         placeholder="Enter amount"
                         size={inputSize}
@@ -102,7 +105,7 @@ const Step4 = () => {
 
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4} align="center">
                 <Text fontSize="sm" color="gray.600">
-                     Tip: Save your payment now — you can submit the full application later.
+                    Tip: Save your payment now — you can submit the full application later.
                 </Text>
             </Stack>
         </Box>

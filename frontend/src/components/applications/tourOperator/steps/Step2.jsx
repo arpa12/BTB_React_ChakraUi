@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
     Heading,
@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
-// Reusable section wrapper
+// Styled Components
 const Section = ({ title, subtitle, children }) => {
     const borderColor = useColorModeValue("gray.200", "gray.700");
     return (
@@ -43,7 +43,6 @@ const Section = ({ title, subtitle, children }) => {
     );
 };
 
-// Styled Input and Select
 const ModernInput = (props) => (
     <Input
         bg="white"
@@ -62,29 +61,21 @@ const ModernSelect = (props) => (
     />
 );
 
-const Step2 = () => {
-    const [employees, setEmployees] = useState([
-        {
-            name: "",
-            address: "",
-            nationality: "",
-            designation: "",
-            education: "",
-            appointmentDate: "",
-            experience: "",
-            nid: "",
-            passport: "",
-        },
-    ]);
+// ✅ Step2 component
+const Step2 = ({ formData, setFormData }) => {
+    const employees = formData || [];
 
     const handleInputChange = (index, field, value) => {
         const updated = [...employees];
-        updated[index][field] = value;
-        setEmployees(updated);
+        updated[index] = {
+            ...updated[index],
+            [field]: value,
+        };
+        setFormData(updated);
     };
 
     const handleAddRow = () => {
-        setEmployees([
+        setFormData([
             ...employees,
             {
                 name: "",
@@ -101,10 +92,10 @@ const Step2 = () => {
     };
 
     const handleRemoveRow = (index) => {
-        if (employees.length === 1) return;
+        if (employees.length <= 1) return;
         const updated = [...employees];
         updated.splice(index, 1);
-        setEmployees(updated);
+        setFormData(updated);
     };
 
     return (

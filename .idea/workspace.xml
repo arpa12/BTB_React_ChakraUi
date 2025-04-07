@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/landingPage/headerStyles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/landingPage/headerStyles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/applicationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/applicationForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/registerForm.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/toLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/toLayout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/StepIndicator.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/StepIndicator.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step1.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step2.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step3.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step4.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step4.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/landingPage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/landingPage/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/DashboardHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/DashboardHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/Profile.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/DashboardLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/DashboardLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/Sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/Topbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/dashboardLayout/Topbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/loginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/loginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +203,8 @@
       <workItem from="1743783472530" duration="6788000" />
       <workItem from="1743868629087" duration="6113000" />
       <workItem from="1743911293920" duration="21000" />
-      <workItem from="1743911322616" duration="16698000" />
+      <workItem from="1743911322616" duration="17316000" />
+      <workItem from="1743999248496" duration="16323000" />
     </task>
     <servers />
   </component>
