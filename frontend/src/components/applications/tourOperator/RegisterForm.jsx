@@ -10,7 +10,7 @@ import {
 import StepIndicator from "./StepIndicator";
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
-import Step3, { documentList } from "./steps/Step3";
+import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 
 // Utility function to save drafts to localStorage
@@ -43,6 +43,7 @@ const RegisterForm = () => {
     });
 
     const toast = useToast();
+    const isMobile = useBreakpointValue({ base: true, md: false });
 
     // Load draft from localStorage if available
     useEffect(() => {
@@ -67,94 +68,22 @@ const RegisterForm = () => {
         });
     };
 
-    const handleStepSubmit = async () => {
-        const token = localStorage.getItem("authToken"); // Get the token from localStorage
+    const handleStepSubmit = () => {
+        toast({
+            title: "Step Complete",
+            description: `You have completed step ${step}.`,
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+        });
 
-        if (!token) {
+        if (step < 4) {
+            handleNext();
+        } else {
             toast({
-                title: "Error",
-                description: "You are not authenticated. Please log in.",
-                status: "error",
-                duration: 3000,
-                isClosable: true,
-            });
-            return;
-        }
-
-        try {
-            // This is the correct endpoint for step 1, step 2, etc.
-            const endpoint = `/api/tour-operator/step${step}`;
-
-            // Send the request to the backend with the token in the headers
-            const response = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,  // Send the token here
-                },
-                body: JSON.stringify(formData[`step${step}`]), // Send the current step's data
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();  // Read the response as text
-                throw new Error(`Error: ${errorText}`);
-            }
-
-            const result = await response.json(); // Parse the response as JSON
-
-            toast({
-                title: "Success",
-                description: `Step ${step} saved successfully.`,
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            });
-
-            if (step < 4) {
-                handleNext();
-            }
-        } catch (error) {
-            toast({
-                title: "Error",
-                description: error.message || "Submission failed.",
-                status: "error",
-                duration: 3000,
-                isClosable: true,
-            });
-        }
-    };
-
-    const handleSubmitAll = async () => {
-        const token = localStorage.getItem("authToken");
-
-        try {
-            const payload = { ...formData.step1, ...formData.step2, ...formData.step3, ...formData.step4 };
-            const response = await fetch("/api/tour-operator/submit-all", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(payload),
-            });
-
-            const result = await response.json();
-            if (!response.ok) throw new Error(result.message);
-
-            toast({
-                title: "Success",
-                description: "All steps submitted successfully.",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            });
-
-            clearDraft();
-        } catch (error) {
-            toast({
-                title: "Error",
-                description: error.message || "Error submitting all steps.",
-                status: "error",
+                title: "Form Complete",
+                description: "All steps have been filled. You may now save or export the data.",
+                status: "info",
                 duration: 3000,
                 isClosable: true,
             });
@@ -175,8 +104,6 @@ const RegisterForm = () => {
                 return null;
         }
     };
-
-    const isMobile = useBreakpointValue({ base: true, md: false });
 
     return (
         <Box bg="gray.50" p={{ base: 4, md: 8 }} borderRadius="lg" boxShadow="md">

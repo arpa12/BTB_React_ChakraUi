@@ -1,31 +1,11 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Laravel CORS Configuration
-    |--------------------------------------------------------------------------
-    |
-    | You may configure your settings for cross-origin resource sharing (CORS).
-    | This determines what cross-origin operations may execute in web browsers.
-    |
-    */
-
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
-
-    'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
-    'allowed_headers' => ['*'],
-
+    'allowed_methods' => ['*'], // Allow all HTTP methods (GET, POST, etc.)
+    'allowed_origins' => ['http://localhost:3000'], // Allow frontend origin
+    'allowed_headers' => ['*'], // Allow all headers
     'exposed_headers' => [],
-
     'max_age' => 0,
-
-    'supports_credentials' => false,
-
+    'supports_credentials' => true, // Ensure credentials are supported (cookies, authorization headers)
 ];

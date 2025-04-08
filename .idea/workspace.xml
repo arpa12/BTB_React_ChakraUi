@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/TourOperatorController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/Step1ApplicantInfo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/Step2Employee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/Step3Document.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/Step4Payment.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/TourOperatorApplication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/cors.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_07_073042_create_tour_operator_applications_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_07_073043_create_step1_applicant_infos_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_07_073043_create_step2_employees_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_07_073044_create_step3_documents_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_07_073044_create_step4_payments_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step1.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step1.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step2.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step3.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step4.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/steps/Step4.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/registrationLogin/registrationForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +217,8 @@
       <workItem from="1743868629087" duration="6113000" />
       <workItem from="1743911293920" duration="21000" />
       <workItem from="1743911322616" duration="17316000" />
-      <workItem from="1743999248496" duration="16323000" />
+      <workItem from="1743999248496" duration="18277000" />
+      <workItem from="1744095145264" duration="14626000" />
     </task>
     <servers />
   </component>

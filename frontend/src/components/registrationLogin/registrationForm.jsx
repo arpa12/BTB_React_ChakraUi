@@ -43,6 +43,7 @@ const RegistrationForm = () => {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
+        withCredentials: true, // Send credentials along with the request (cookies, headers, etc.)
       });
 
       if (response.data) {

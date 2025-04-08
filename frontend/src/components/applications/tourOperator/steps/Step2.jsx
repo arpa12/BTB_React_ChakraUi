@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Box,
     Heading,
@@ -61,9 +61,31 @@ const ModernSelect = (props) => (
     />
 );
 
-// ✅ Step2 component
 const Step2 = ({ formData, setFormData }) => {
-    const employees = formData || [];
+    // If step2 is empty, start with one employee row
+    const employees = formData.step2?.length > 0
+        ? formData.step2
+        : [{
+            name: "",
+            address: "",
+            nationality: "",
+            designation: "",
+            education: "",
+            appointmentDate: "",
+            experience: "",
+            nid: "",
+            passport: "",
+        }];
+
+    // Initialize with one row if not present
+    useEffect(() => {
+        if (!formData.step2 || formData.step2.length === 0) {
+            setFormData((prev) => ({
+                ...prev,
+                step2: employees,
+            }));
+        }
+    }, []);
 
     const handleInputChange = (index, field, value) => {
         const updated = [...employees];
@@ -71,11 +93,14 @@ const Step2 = ({ formData, setFormData }) => {
             ...updated[index],
             [field]: value,
         };
-        setFormData(updated);
+        setFormData((prev) => ({
+            ...prev,
+            step2: updated,
+        }));
     };
 
     const handleAddRow = () => {
-        setFormData([
+        const updated = [
             ...employees,
             {
                 name: "",
@@ -88,14 +113,21 @@ const Step2 = ({ formData, setFormData }) => {
                 nid: "",
                 passport: "",
             },
-        ]);
+        ];
+        setFormData((prev) => ({
+            ...prev,
+            step2: updated,
+        }));
     };
 
     const handleRemoveRow = (index) => {
         if (employees.length <= 1) return;
         const updated = [...employees];
         updated.splice(index, 1);
-        setFormData(updated);
+        setFormData((prev) => ({
+            ...prev,
+            step2: updated,
+        }));
     };
 
     return (
