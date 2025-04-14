@@ -1,3 +1,4 @@
+// src/components/applications/tourOperator/RegisterForm.jsx
 import React, { useState, useEffect } from "react";
 import {
     Box,
@@ -22,11 +23,6 @@ const saveDraft = (step, formData) => {
 const getDraft = () => {
     const draft = localStorage.getItem("draft");
     return draft ? JSON.parse(draft) : null;
-};
-
-// Utility function to clear saved drafts
-const clearDraft = () => {
-    localStorage.removeItem("draft");
 };
 
 const RegisterForm = () => {
@@ -57,7 +53,7 @@ const RegisterForm = () => {
     const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
     const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
 
-    const handleSaveDraft = () => {
+    const handleSaveDraft = async () => {
         saveDraft(step, formData);
         toast({
             title: "Draft Saved",
@@ -66,9 +62,30 @@ const RegisterForm = () => {
             duration: 3000,
             isClosable: true,
         });
+
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/tour-operator/save-draft", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+            console.log(result);
+        } catch (error) {
+            toast({
+                title: "Error",
+                description: "There was an error saving the draft.",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+            });
+        }
     };
 
-    const handleStepSubmit = () => {
+    const handleStepSubmit = async () => {
         toast({
             title: "Step Complete",
             description: `You have completed step ${step}.`,
@@ -87,6 +104,27 @@ const RegisterForm = () => {
                 duration: 3000,
                 isClosable: true,
             });
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/tour-operator/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+                console.log(result);
+            } catch (error) {
+                toast({
+                    title: "Error",
+                    description: "There was an error submitting the form.",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                });
+            }
         }
     };
 
