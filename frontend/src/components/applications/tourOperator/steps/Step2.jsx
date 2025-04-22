@@ -1,282 +1,112 @@
-import React, { useEffect } from "react";
-import {
-    Box,
-    Heading,
-    Text,
-    SimpleGrid,
-    FormControl,
-    FormLabel,
-    Input,
-    Select,
-    IconButton,
-    useColorModeValue,
-    Container,
-    Stack,
-} from "@chakra-ui/react";
-import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
+import React from 'react';
+import { Box, Input, Select, Stack, FormControl, FormLabel, SimpleGrid } from '@chakra-ui/react';
 
-// Styled Components
-const Section = ({ title, subtitle, children }) => {
-    const borderColor = useColorModeValue("gray.200", "gray.700");
-    return (
-        <Box
-            bg="white"
-            p={{ base: 6, md: 8 }}
-            borderRadius="lg"
-            boxShadow="lg"
-            mb={8}
-            border="1px solid"
-            borderColor={borderColor}
-        >
-            <Box mb={6}>
-                <Heading size="md" mb={1} color="gray.800">
-                    {title}
-                </Heading>
-                {subtitle && (
-                    <Text fontSize="sm" color="gray.500">
-                        {subtitle}
-                    </Text>
-                )}
-            </Box>
-            {children}
-        </Box>
-    );
-};
-
-const ModernInput = (props) => (
-    <Input
+const Step2 = ({ formData, handleChange }) => (
+    <Box
+        p={6}
+        maxW="800px"
+        mx="auto"
+        borderRadius="lg"
+        boxShadow="md"
         bg="white"
-        _focus={{ bg: "white", borderColor: "blue.300" }}
-        _hover={{ bg: "gray.100" }}
-        {...props}
-    />
-);
+    >
+        <Stack spacing={5}>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                <FormControl>
+                    <FormLabel>Employee Name</FormLabel>
+                    <Input
+                        name="emp_name"
+                        placeholder="Enter employee name"
+                        value={formData.emp_name}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <FormLabel>Address</FormLabel>
+                    <Input
+                        name="emp_address"
+                        placeholder="Enter address"
+                        value={formData.emp_address}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+            </SimpleGrid>
 
-const ModernSelect = (props) => (
-    <Select
-        bg="white"
-        _focus={{ bg: "white", borderColor: "blue.300" }}
-        _hover={{ bg: "gray.100" }}
-        {...props}
-    />
-);
-
-const Step2 = ({ formData, setFormData }) => {
-    // If step2 is empty, start with one employee row
-    const employees = formData.step2?.length > 0
-        ? formData.step2
-        : [{
-            name: "",
-            address: "",
-            nationality: "",
-            designation: "",
-            education: "",
-            appointmentDate: "",
-            experience: "",
-            nid: "",
-            passport: "",
-        }];
-
-    // Initialize with one row if not present
-    useEffect(() => {
-        if (!formData.step2 || formData.step2.length === 0) {
-            setFormData((prev) => ({
-                ...prev,
-                step2: employees,
-            }));
-        }
-    }, []);
-
-    const handleInputChange = (index, field, value) => {
-        const updated = [...employees];
-        updated[index] = {
-            ...updated[index],
-            [field]: value,
-        };
-        setFormData((prev) => ({
-            ...prev,
-            step2: updated,
-        }));
-    };
-
-    const handleAddRow = () => {
-        const updated = [
-            ...employees,
-            {
-                name: "",
-                address: "",
-                nationality: "",
-                designation: "",
-                education: "",
-                appointmentDate: "",
-                experience: "",
-                nid: "",
-                passport: "",
-            },
-        ];
-        setFormData((prev) => ({
-            ...prev,
-            step2: updated,
-        }));
-    };
-
-    const handleRemoveRow = (index) => {
-        if (employees.length <= 1) return;
-        const updated = [...employees];
-        updated.splice(index, 1);
-        setFormData((prev) => ({
-            ...prev,
-            step2: updated,
-        }));
-    };
-
-    return (
-        <Container maxW="6xl" py={10}>
-            <Section
-                title="১০. কর্মকর্তা-কর্মচারীদের বিবরণ"
-                subtitle="Note: If the nationality is Bangladeshi, fill in the NID field. Otherwise, fill in the Passport field."
-            >
-                {employees.map((emp, index) => (
-                    <Box
-                        key={index}
-                        border="1px solid"
-                        borderColor="gray.200"
-                        borderRadius="md"
-                        p={4}
-                        mb={6}
-                        bg="gray.50"
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                <FormControl>
+                    <FormLabel>Gender</FormLabel>
+                    <Select
+                        name="emp_gender"
+                        value={formData.emp_gender}
+                        onChange={handleChange}
+                        placeholder="Select gender"
+                        _focus={{ borderColor: 'teal.500' }}
                     >
-                        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-                            <FormControl>
-                                <FormLabel>নাম (Name)</FormLabel>
-                                <ModernInput
-                                    value={emp.name}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "name", e.target.value)
-                                    }
-                                    placeholder="নাম লিখুন"
-                                />
-                            </FormControl>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </Select>
+                </FormControl>
+                <FormControl>
+                    <FormLabel>Designation</FormLabel>
+                    <Input
+                        name="emp_designation"
+                        placeholder="Enter designation"
+                        value={formData.emp_designation}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+            </SimpleGrid>
 
-                            <FormControl>
-                                <FormLabel>ঠিকানা (Address)</FormLabel>
-                                <ModernInput
-                                    value={emp.address}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "address", e.target.value)
-                                    }
-                                    placeholder="ঠিকানা লিখুন"
-                                />
-                            </FormControl>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                <FormControl>
+                    <FormLabel>Education</FormLabel>
+                    <Input
+                        name="emp_education"
+                        placeholder="Enter education"
+                        value={formData.emp_education}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <FormLabel>Appointment Date</FormLabel>
+                    <Input
+                        name="emp_appointment_date"
+                        type="date"
+                        value={formData.emp_appointment_date}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+            </SimpleGrid>
 
-                            <FormControl>
-                                <FormLabel>জাতীয়তা (Nationality)</FormLabel>
-                                <ModernSelect
-                                    placeholder="নির্বাচন করুন"
-                                    value={emp.nationality}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "nationality", e.target.value)
-                                    }
-                                >
-                                    <option value="Bangladeshi">Bangladeshi</option>
-                                    <option value="Other">Other</option>
-                                </ModernSelect>
-                            </FormControl>
-
-                            <FormControl>
-                                <FormLabel>পদমর্যাদা (Designation)</FormLabel>
-                                <ModernInput
-                                    value={emp.designation}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "designation", e.target.value)
-                                    }
-                                    placeholder="পদমর্যাদা লিখুন"
-                                />
-                            </FormControl>
-
-                            <FormControl>
-                                <FormLabel>শিক্ষাগত যোগ্যতা (Education)</FormLabel>
-                                <ModernInput
-                                    value={emp.education}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "education", e.target.value)
-                                    }
-                                    placeholder="শিক্ষাগত যোগ্যতা লিখুন"
-                                />
-                            </FormControl>
-
-                            <FormControl>
-                                <FormLabel>নিয়োগের তারিখ (Appointment Date)</FormLabel>
-                                <ModernInput
-                                    type="date"
-                                    value={emp.appointmentDate}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "appointmentDate", e.target.value)
-                                    }
-                                />
-                            </FormControl>
-
-                            <FormControl>
-                                <FormLabel>অভিজ্ঞতা (Experience)</FormLabel>
-                                <ModernInput
-                                    value={emp.experience}
-                                    onChange={(e) =>
-                                        handleInputChange(index, "experience", e.target.value)
-                                    }
-                                    placeholder="অভিজ্ঞতার বিবরণ দিন"
-                                />
-                            </FormControl>
-
-                            {emp.nationality === "Bangladeshi" ? (
-                                <FormControl>
-                                    <FormLabel>জাতীয় পরিচয়পত্র (NID)</FormLabel>
-                                    <ModernInput
-                                        value={emp.nid}
-                                        onChange={(e) =>
-                                            handleInputChange(index, "nid", e.target.value)
-                                        }
-                                        placeholder="NID নম্বর"
-                                    />
-                                </FormControl>
-                            ) : (
-                                <FormControl>
-                                    <FormLabel>পাসপোর্ট (Passport)</FormLabel>
-                                    <ModernInput
-                                        value={emp.passport}
-                                        onChange={(e) =>
-                                            handleInputChange(index, "passport", e.target.value)
-                                        }
-                                        placeholder="পাসপোর্ট নম্বর"
-                                    />
-                                </FormControl>
-                            )}
-                        </SimpleGrid>
-
-                        <Stack mt={4} direction="row" justify="flex-end" spacing={3}>
-                            {index === employees.length - 1 && (
-                                <IconButton
-                                    icon={<AddIcon />}
-                                    onClick={handleAddRow}
-                                    aria-label="Add Employee"
-                                    colorScheme="blue"
-                                    variant="outline"
-                                />
-                            )}
-                            {employees.length > 1 && (
-                                <IconButton
-                                    icon={<DeleteIcon />}
-                                    onClick={() => handleRemoveRow(index)}
-                                    aria-label="Remove Employee"
-                                    colorScheme="red"
-                                    variant="ghost"
-                                />
-                            )}
-                        </Stack>
-                    </Box>
-                ))}
-            </Section>
-        </Container>
-    );
-};
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+                <FormControl>
+                    <FormLabel>Experience</FormLabel>
+                    <Input
+                        name="emp_experience"
+                        placeholder="Enter experience"
+                        value={formData.emp_experience}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+                <FormControl>
+                    <FormLabel>Passport Number</FormLabel>
+                    <Input
+                        name="emp_passport"
+                        placeholder="Enter passport number"
+                        value={formData.emp_passport}
+                        onChange={handleChange}
+                        _focus={{ borderColor: 'teal.500' }}
+                    />
+                </FormControl>
+            </SimpleGrid>
+        </Stack>
+    </Box>
+);
 
 export default Step2;

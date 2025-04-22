@@ -18,11 +18,14 @@ const DashboardHome = () => {
     const [error, setError] = useState('');
     const [logoutError, setLogoutError] = useState('');
     const navigate = useNavigate();
+    const [draftCount, setDraftCount] = useState(0);
+    const [submittedCount, setSubmittedCount] = useState(0);
+
 
     const gridColumns = useBreakpointValue({ base: 1, md: 2, lg: 3 });
 
     useEffect(() => {
-        const fetchUserData = async () => {
+        const fetchDashboardData = async () => {
             const token = localStorage.getItem('token');
             if (!token) {
                 navigate('/login');
@@ -30,25 +33,39 @@ const DashboardHome = () => {
             }
 
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/dashboard', {
+                // Step 1: Get user info
+                const userRes = await axios.get('http://127.0.0.1:8000/api/dashboard', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-                setUser(response.data.user);
-                setLoading(false);
+                setUser(userRes.data.user);
+
+                // Step 2: Get all tour operator applications
+                const appsRes = await axios.get('http://127.0.0.1:8000/api/tour-operator/list', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                const applications = appsRes.data;
+
+                // Step 3: Filter locally
+                const draftCount = applications.filter(app => app.status === 'draft').length;
+                const submittedCount = applications.filter(app => app.status === 'submitted').length;
+
+                setDraftCount(draftCount);
+                setSubmittedCount(submittedCount);
             } catch (err) {
-                setLoading(false);
+                setError('Failed to fetch data.');
                 if (err.response?.status === 401) {
-                    setError('Session expired. Please log in again.');
                     localStorage.removeItem('token');
                     navigate('/login');
-                } else {
-                    setError('Failed to fetch user data.');
                 }
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchUserData();
+        fetchDashboardData();
     }, [navigate]);
+
 
     if (loading) {
         return (
@@ -81,7 +98,8 @@ const DashboardHome = () => {
                         <VStack spacing={3}>
                             <Icon as={FaClipboardList} boxSize={{ base: 8, md: 10 }} color="purple.600" />
                             <Heading size={{ base: 'sm', md: 'md' }} color="purple.600">Draft Application</Heading>
-                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">2</Text>
+                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">{draftCount}</Text>
+
                         </VStack>
                     </CardBody>
                 </Card>
@@ -90,7 +108,7 @@ const DashboardHome = () => {
                         <VStack spacing={3}>
                             <Icon as={FaCheckCircle} boxSize={{ base: 8, md: 10 }} color="purple.600" />
                             <Heading size={{ base: 'sm', md: 'md' }} color="purple.600">Saved Application</Heading>
-                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">6</Text>
+                            <Text fontSize={{ base: 'xl', md: '2xl' }} color="purple.600">{submittedCount}</Text>
                         </VStack>
                     </CardBody>
                 </Card>

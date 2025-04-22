@@ -1,201 +1,162 @@
-// src/components/applications/tourOperator/RegisterForm.jsx
-import React, { useState, useEffect } from "react";
-import {
-    Box,
-    Heading,
-    Button,
-    Flex,
-    useBreakpointValue,
-    useToast,
-} from "@chakra-ui/react";
-import StepIndicator from "./StepIndicator";
-import Step1 from "./steps/Step1";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step4 from "./steps/Step4";
+import React, { useState } from 'react';
+import { Box, Button, Flex, Text, useToast, Heading } from '@chakra-ui/react';
+import Step1 from './steps/Step1';
+import Step2 from './steps/Step2';
+import Step3 from './steps/Step3';
+import Step4 from './steps/Step4';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import StepIndicator from '../tourOperator/StepIndicator';
 
-// Utility function to save drafts to localStorage
-const saveDraft = (step, formData) => {
-    localStorage.setItem("draft", JSON.stringify({ step, formData }));
+const initialForm = {
+    // Step 1
+    applicant_name_bn: '',
+    applicant_name_en: '',
+    applicant_father_name: '',
+    applicant_mother_name: '',
+    applicant_gender: '',
+    applicant_designation: '',
+    applicant_mobile: '',
+    applicant_phone: '',
+    applicant_email: '',
+
+    // Step 2
+    emp_name: '',
+    emp_address: '',
+    emp_gender: '',
+    emp_designation: '',
+    emp_education: '',
+    emp_appointment_date: '',
+    emp_experience: '',
+    emp_passport: '',
+
+    // Step 3 (files)
+    file_1: null,
+    file_2: null,
+    file_3: null,
+
+    // Step 4
+    method: '',
+    transaction_id: '',
+    amount: '',
 };
 
-// Utility function to get saved drafts from localStorage
-const getDraft = () => {
-    const draft = localStorage.getItem("draft");
-    return draft ? JSON.parse(draft) : null;
-};
+const steps = ['Applicant Info', 'Employee Info', 'Document Upload', 'Payment'];
 
 const RegisterForm = () => {
-    const [step, setStep] = useState(1);
-    const [formData, setFormData] = useState({
-        step1: {
-            applicant: {},
-            organization: {},
-            business_address: {},
-        },
-        step2: [],
-        step3: {},
-        step4: {},
-    });
-
+    const [step, setStep] = useState(0);
+    const [formData, setFormData] = useState(initialForm);
     const toast = useToast();
-    const isMobile = useBreakpointValue({ base: true, md: false });
+    const navigate = useNavigate();  // Initialize useNavigate hook
 
-    // Load draft from localStorage if available
-    useEffect(() => {
-        const draft = getDraft();
-        if (draft) {
-            setStep(draft.step);
-            setFormData(draft.formData);
-        }
-    }, []);
-
-    const handleNext = () => setStep((prev) => Math.min(prev + 1, 4));
-    const handlePrev = () => setStep((prev) => Math.max(prev - 1, 1));
-
-    const handleSaveDraft = async () => {
-        saveDraft(step, formData);
-        toast({
-            title: "Draft Saved",
-            description: "Your progress has been saved as a draft.",
-            status: "info",
-            duration: 3000,
-            isClosable: true,
-        });
-
-        try {
-            const response = await fetch("http://127.0.0.1:8000/api/tour-operator/save-draft", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-            console.log(result);
-        } catch (error) {
-            toast({
-                title: "Error",
-                description: "There was an error saving the draft.",
-                status: "error",
-                duration: 3000,
-                isClosable: true,
-            });
-        }
+    const handleChange = (e) => {
+        const { name, value, files } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: files ? files[0] : value,
+        }));
     };
 
-    const handleStepSubmit = async () => {
-        toast({
-            title: "Step Complete",
-            description: `You have completed step ${step}.`,
-            status: "success",
-            duration: 2000,
-            isClosable: true,
-        });
+    const nextStep = () => setStep((prev) => prev + 1);
+    const prevStep = () => setStep((prev) => prev - 1);
 
-        if (step < 4) {
-            handleNext();
-        } else {
-            toast({
-                title: "Form Complete",
-                description: "All steps have been filled. You may now save or export the data.",
-                status: "info",
-                duration: 3000,
-                isClosable: true,
-            });
-
-            try {
-                const response = await fetch("http://127.0.0.1:8000/api/tour-operator/submit", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
-                });
-
-                const result = await response.json();
-                console.log(result);
-            } catch (error) {
+    const handleSubmit = async (isDraft = false) => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
                 toast({
-                    title: "Error",
-                    description: "There was an error submitting the form.",
-                    status: "error",
-                    duration: 3000,
+                    title: 'Authentication Error',
+                    description: 'Please log in first.',
+                    status: 'error',
+                    duration: 4000,
                     isClosable: true,
                 });
+                return;
             }
+
+            // Prepare the FormData object
+            const data = new FormData();
+            for (const key in formData) {
+                if (formData[key] !== null && formData[key] !== '') {
+                    data.append(key, formData[key]);
+                }
+            }
+
+            data.append('status', isDraft ? 'draft' : 'submitted');
+            if (formData.id) {
+                data.append('id', formData.id); // for updating draft
+            }
+
+            // Make the API request
+            const response = await axios.post(
+                'http://127.0.0.1:8000/api/tour-operator/save',
+                data,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data',
+                    },
+                }
+            );
+
+            toast({
+                title: 'Success',
+                description: response.data.message,
+                status: 'success',
+                duration: 4000,
+                isClosable: true,
+            });
+
+            // Redirect after saving the draft or submitting
+            navigate('/dashboard/tour-operator/applications'); // Redirect to the application list page
+        } catch (error) {
+            const message = error.response?.data?.message || 'Something went wrong';
+            toast({
+                title: 'Error',
+                description: message,
+                status: 'error',
+                duration: 4000,
+                isClosable: true,
+            });
         }
     };
 
-    const renderStepContent = () => {
+    const renderStep = () => {
         switch (step) {
+            case 0:
+                return <Step1 formData={formData} handleChange={handleChange} />;
             case 1:
-                return <Step1 formData={formData} setFormData={setFormData} />;
+                return <Step2 formData={formData} handleChange={handleChange} />;
             case 2:
-                return <Step2 formData={formData} setFormData={setFormData} />;
+                return <Step3 formData={formData} handleChange={handleChange} />;
             case 3:
-                return <Step3 formData={formData} setFormData={setFormData} />;
-            case 4:
-                return <Step4 formData={formData} setFormData={setFormData} />;
+                return <Step4 formData={formData} handleChange={handleChange} />;
             default:
                 return null;
         }
     };
 
     return (
-        <Box bg="gray.50" p={{ base: 4, md: 8 }} borderRadius="lg" boxShadow="md">
-            <Heading size="lg" mb={6} textAlign="center" color="purple.600">
-                টুর অপারেটরের নিবন্ধনের জন্য আবেদন
-                <Box as="span" display="block" fontSize="md" color="gray.600" mt={2}>
-                    [Tour Operators Registration Application]
-                </Box>
-            </Heading>
+        <Box >
+            <StepIndicator currentStep={step + 1} />
+            <Heading fontSize="2xl" mt={6} mb={4} textAlign="center">Step {step + 1}: {steps[step]}</Heading>
 
-            <StepIndicator currentStep={step} />
+            {renderStep()}
 
-            <Box mt={4}>{renderStepContent()}</Box>
-
-            <Flex
-                mt={8}
-                direction={{ base: "column", sm: "row" }}
-                justify="space-between"
-                align={{ base: "stretch", sm: "center" }}
-                gap={4}
-                flexWrap="wrap"
-            >
+            <Flex justify="space-between" mt={6}>
                 <Button
                     variant="outline"
-                    colorScheme="purple"
-                    onClick={handleSaveDraft}
-                    w={{ base: "100%", sm: "auto" }}
+                    colorScheme="yellow"
+                    onClick={() => handleSubmit(true)}  // Save as Draft
                 >
-                    খসড়া করুন (Save as Draft)
+                    Save as Draft
                 </Button>
-
-                <Flex
-                    gap={3}
-                    w={{ base: "100%", sm: "auto" }}
-                    justify={{ base: "space-between", sm: "flex-end" }}
-                >
-                    <Button
-                        onClick={handlePrev}
-                        isDisabled={step === 1}
-                        variant="outline"
-                        colorScheme="purple"
-                        w={{ base: "48%", sm: "auto" }}
-                    >
-                        পূর্ববর্তী (Previous)
-                    </Button>
-
-                    <Button
-                        colorScheme="purple"
-                        onClick={handleStepSubmit}
-                        w={{ base: "48%", sm: "auto" }}
-                    >
-                        {step < 4 ? "পরবর্তী (Next)" : "সেভ করুন (Save)"}
-                    </Button>
-                </Flex>
+                {step > 0 && <Button onClick={prevStep}>Back</Button>}
+                {step < steps.length - 1 ? (
+                    <Button colorScheme="teal" onClick={nextStep}>Next</Button>
+                ) : (
+                    <Button colorScheme="green" onClick={() => handleSubmit(false)}>Submit</Button>
+                )}
             </Flex>
         </Box>
     );

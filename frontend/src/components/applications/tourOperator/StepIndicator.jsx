@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 const steps = [
-    { title: "১", label: "ব্যাক্তিগত ও ব্যবসায়িক তথ্য", subtitle: "Personal and Business Information" },
+    { title: "১", label: "ব্যাক্তিগত তথ্য", subtitle: "Personal Information" },
     { title: "২", label: "কর্মকর্তা/কর্মচারী বিবরণ", subtitle: "Employee Details" },
     { title: "৩", label: "সংযুক্তি", subtitle: "Attachment" },
     { title: "৪", label: "পেমেন্ট এবং সাবমিট", subtitle: "Payment and Submission" },

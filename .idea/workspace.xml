@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44727df2-2f86-49e2-b74c-41b8e1ece30a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/TourOperatorRegistrationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/TourOperatorRegistration.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2025_04_08_155409_create_tour_operator_registrations_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/applications/tourOperator/RegisterForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +22,9 @@
     <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/backend/vendor/symfony/string" />
@@ -156,8 +160,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Arpa/business automation ltd/WebCrafter/react_basement",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/xampp/htdocs/BTB_React",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -205,6 +209,12 @@
       <workItem from="1744124612110" duration="9000" />
       <workItem from="1744124623306" duration="4364000" />
       <workItem from="1744134895313" duration="30000" />
+      <workItem from="1744691612824" duration="11550000" />
+      <workItem from="1744781619304" duration="2065000" />
+      <workItem from="1745123626500" duration="14685000" />
+      <workItem from="1745213032706" duration="11124000" />
+      <workItem from="1745233777152" duration="4119000" />
+      <workItem from="1745296580407" duration="10852000" />
     </task>
     <servers />
   </component>
