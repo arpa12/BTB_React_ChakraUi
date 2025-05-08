@@ -2,21 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\TourOperatorController;
+use App\Http\Controllers\CustomerController;
 
+// Auth Routes
 Route::post('/register', [UsersController::class, 'register']);
 Route::post('/login', [UsersController::class, 'login']);
+Route::post('/logout', [UsersController::class, 'logout'])->middleware('auth:api');
 
-Route::middleware(['auth:api'])->group(function () {
-    Route::get('/dashboard', [UsersController::class, 'dashboard']);
-    Route::post('/logout', [UsersController::class, 'logout']);
-});
-
-
-
-Route::middleware('auth:api')->group(function () {
-    Route::post('/tour-operator/save', [TourOperatorController::class, 'saveOrSubmit']);
-    Route::get('/tour-operator/list', [TourOperatorController::class, 'list']);
-    Route::get('/tour-operator/{id}', [TourOperatorController::class, 'getById']);
-});
-
+// Customer Features
+Route::get('/services', [CustomerController::class, 'listServices']);
+Route::post('/book', [CustomerController::class, 'bookService']);
+Route::get('/booking/{id}', [CustomerController::class, 'bookingStatus']);
